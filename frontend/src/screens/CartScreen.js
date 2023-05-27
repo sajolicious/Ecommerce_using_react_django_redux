@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 /* REACT ROUTER */
 import { Link } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+
 /* REACT BOOTSTRAP */
 import {
   Row,
@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 /* ACTION CREATORS */
 import { addToCart, removeFromCart } from "../actions/cartActions";
 
-function CartScreen({ match, location }) {
+function CartScreen({ match, location, history }) {
   /* GETTING DATA FROM URL IF PRESENT */
   const productId = match.params.id;
 
@@ -50,7 +50,7 @@ function CartScreen({ match, location }) {
   };
 
   const checkoutHandler = () => {
-    Navigate("/login");
+    history.push("/login?redirect=shipping");
   };
 
   return (
